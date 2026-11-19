@@ -1,0 +1,798 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jose Cataquiz | ADVCOM E-Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f5f6f2;
+  --card: #ffffff;
+  --text: #193328;
+  --muted: #66766e;
+  --accent: #b8db83;
+  --border: #dce5dc;
+}
+
+body.dark {
+  --bg: #111d18;
+  --card: #21332a;
+  --text: #f2f6f0;
+  --muted: #b5c6b9;
+  --border: #405247;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  transition: background .3s, color .3s;
+}
+
+h1,h2,h3 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 18px 7%;
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.logo span { color: #80b158; }
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.theme-btn {
+  background: var(--accent);
+  border: none;
+  padding: 9px 14px;
+  border-radius: 20px;
+}
+
+.hero {
+  min-height: 490px;
+  background: linear-gradient(135deg,#173c2b,#28563a);
+  color: white;
+  padding: 100px 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "JC";
+  position: absolute;
+  right: -30px;
+  bottom: -110px;
+  font-size: 350px;
+  font-weight: 700;
+  opacity: .035;
+}
+
+.eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(44px,7vw,88px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+  margin: 20px 0;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  max-width: 600px;
+  color: #d8e7dc;
+  line-height: 1.8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 13px 22px;
+  background: var(--accent);
+  color: #173928;
+  border: 0;
+  border-radius: 9px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 70px 25px;
+}
+
+.section-label {
+  color: #729951;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(30px,4vw,42px);
+  letter-spacing: -1.5px;
+  margin: 9px 0 17px;
+}
+
+.description {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  padding: 25px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 16px;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px #00000013;
+}
+
+.card h3 { margin: 12px 0; }
+
+.card p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.number {
+  color: #80ac5e;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.reflection {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.reflection strong {
+  display: block;
+  margin-bottom: 7px;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.small-btn {
+  background: var(--text);
+  color: var(--bg);
+  border: 0;
+  border-radius: 8px;
+  padding: 11px 14px;
+  font-weight: 600;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.filterbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.filter {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 30px;
+  padding: 9px 17px;
+}
+
+.filter.active {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.avatar {
+  height: 150px;
+  min-width: 150px;
+  background: #dcecca;
+  color: #335b3c;
+  border-radius: 23px;
+  display: grid;
+  place-items: center;
+  font-size: 62px;
+  font-weight: 700;
+}
+
+.timeline {
+  border-left: 3px solid var(--accent);
+  margin: 35px 0;
+  padding-left: 25px;
+}
+
+.step {
+  margin-bottom: 27px;
+}
+
+.step h3 { margin-bottom: 5px; }
+.step p { color: var(--muted); }
+
+.conclusion {
+  background: #183c2b;
+  color: white;
+  text-align: center;
+  padding: 80px 25px;
+}
+
+.conclusion p {
+  color: #d4e2d8;
+  max-width: 650px;
+  margin: 20px auto;
+  line-height: 1.9;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Background music player */
+.music-player {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+  background: #193d2e;
+  color: white;
+  border: 1px solid #4a6d56;
+  padding: 12px 16px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px #0004;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.music-player button {
+  background: var(--accent);
+  border: 0;
+  width: 39px;
+  height: 39px;
+  border-radius: 50%;
+  font-size: 17px;
+}
+
+.music-player small {
+  display: block;
+  color: #c0d4c5;
+  font-size: 11px;
+}
+
+.music-player input {
+  width: 65px;
+  accent-color: var(--accent);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #000a;
+  z-index: 1000;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show { display: flex; }
+
+.modal-content {
+  background: var(--card);
+  color: var(--text);
+  border-radius: 18px;
+  max-width: 560px;
+  width: 100%;
+  padding: 27px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-content p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.close {
+  float: right;
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 12px;
+}
+
+@media(max-width:650px) {
+  .grid { grid-template-columns: 1fr; }
+  .about { flex-direction: column; align-items: flex-start; }
+  .avatar { min-width: 110px; height: 110px; font-size: 45px; }
+  .hero { padding: 75px 25px; }
+  .music-player { right: 10px; bottom: 10px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">JOSE<span>.</span>PORTFOLIO</div>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#works">My Work</a>
+    <a href="#growth">Growth</a>
+    <button class="theme-btn" onclick="toggleTheme()">☾</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Advanced Business Communication</div>
+  <h1>Hello, I'm<br><span>Jose Cataquiz.</span></h1>
+  <p>BS Economics and Public Policy Student<br>
+  San Beda University</p>
+  <p>Welcome to my digital portfolio. Explore my work,
+  learning experiences, and personal growth in communication.</p>
+  <a class="btn" href="#works">Explore My Portfolio ↓</a>
+</header>
+
+<section class="container" id="about">
+  <div class="section-label">01 / ABOUT ME</div>
+  <h2>Get to know me.</h2>
+
+  <div class="about">
+    <div class="avatar">JC</div>
+    <div>
+      <p class="description">
+        My name is Jose Cataquiz, and I am a BS Economics
+        and Public Policy student at San Beda University.
+        This website presents the activities and lessons
+        I learned in Advanced Business Communication.
+        Through these activities, I developed a better
+        understanding of writing, presenting ideas,
+        and communicating with different people.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="lessons">
+  <div class="section-label">02 / LESSONS</div>
+  <h2>What I've learned.</h2>
+  <p class="description">
+    Important communication concepts demonstrated in my work.
+  </p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="number">01</div>
+      <h3>Effective Communication</h3>
+      <p>I learned that sharing ideas clearly helps people
+      understand a message, especially in academic
+      and professional situations.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">02</div>
+      <h3>Public Speaking</h3>
+      <p>Preparing a speech outline helps me organize
+      information and explain complicated ideas
+      in a simple way.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">03</div>
+      <h3>Cultural Awareness</h3>
+      <p>Respecting cultural differences is important
+      when communicating with people from different backgrounds.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">04</div>
+      <h3>Professional Communication</h3>
+      <p>Clear, respectful communication is useful
+      when working with future colleagues,
+      employers, and other professionals.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container" id="works">
+  <div class="section-label">03 / PORTFOLIO</div>
+  <h2>My Works & Activities.</h2>
+  <p class="description">
+    A compilation of the outputs I submitted
+    throughout my communication learning journey.
+  </p>
+
+  <div class="filterbar">
+    <button class="filter active" onclick="filterWorks('all',this)">All</button>
+    <button class="filter" onclick="filterWorks('written',this)">Written</button>
+    <button class="filter" onclick="filterWorks('video',this)">Videos</button>
+  </div>
+
+  <div class="grid">
+
+    <article class="card work" data-type="written">
+      <div class="number">PROJECT 01 / WRITTEN</div>
+      <h3>Hit or Stand: The Economics of Blackjack</h3>
+      <p>A speech outline about probability,
+      expected value, risk, and decision-making
+      in economics and public policy.</p>
+
+      <div class="reflection">
+        <strong>My Reflection</strong>
+        This activity helped me organize my thoughts
+        and explain economic concepts using simple words.
+        I learned how to prepare a clear presentation.
+      </div>
+
+      <div class="project-actions">
+        <a href="blackjack-outline.docx"
+           class="small-btn" download>
+           View My Output ↓
+        </a>
+        <button class="small-btn"
+          onclick="showDetails('blackjack')">
+          Learn More
+        </button>
+      </div>
+    </article>
+
+    <article class="card work" data-type="written">
+      <div class="number">PROJECT 02 / WRITTEN</div>
+      <h3>Cultural Awareness & Offensive Symbols</h3>
+      <p>An activity about how symbols,
+      religious objects, traditional clothing,
+      and gestures can have different meanings
+      across cultures.</p>
+
+      <div class="reflection">
+        <strong>My Reflection</strong>
+        I learned the importance of respecting
+        different cultures and beliefs.
+        This helped me understand how communication
+        can affect other people.
+      </div>
+
+      <div class="project-actions">
+        <a href="cultural-awareness.pdf"
+           class="small-btn" target="_blank"
+           rel="noopener noreferrer">
+           View My Output ↗
+        </a>
+        <button class="small-btn"
+          onclick="showDetails('culture')">
+          Learn More
+        </button>
+      </div>
+    </article>
+
+    <article class="card work" data-type="video">
+      <div class="number">PROJECT 03 / VIDEO</div>
+      <h3>Screen Recording Activity</h3>
+      <p>My uploaded screen recording,
+      presented as part of this portfolio.</p>
+
+      <div class="reflection">
+        <strong>Simple Reflection (Draft)</strong>
+        This activity reminds me that presenting
+        information clearly is important.
+        It also gives me a chance to review my work.
+      </div>
+
+      <div class="project-actions">
+        <button class="small-btn" onclick="openVideo(1)">
+          Watch Recording ▶
+        </button>
+      </div>
+    </article>
+
+    <article class="card work" data-type="video">
+      <div class="number">PROJECT 04 / VIDEO</div>
+      <h3>Video Presentation Activity</h3>
+      <p>Another video output included in
+      my ADVCOM portfolio compilation.</p>
+
+      <div class="reflection">
+        <strong>Simple Reflection (Draft)</strong>
+        Looking back at my video work helps me
+        identify areas where I can improve
+        my communication and presentation skills.
+      </div>
+
+      <div class="project-actions">
+        <button class="small-btn" onclick="openVideo(2)">
+          Watch Recording ▶
+        </button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="container" id="growth">
+  <div class="section-label">04 / DEVELOPMENT</div>
+  <h2>My Communication Journey.</h2>
+
+  <div class="timeline">
+    <div class="step">
+      <h3>01 — Learning</h3>
+      <p>I learned how to organize my thoughts
+      and understand different communication concepts.</p>
+    </div>
+
+    <div class="step">
+      <h3>02 — Practicing</h3>
+      <p>I practiced preparing written outputs
+      and organizing presentations.</p>
+    </div>
+
+    <div class="step">
+      <h3>03 — Improving</h3>
+      <p>I became more aware of the importance
+      of clarity, preparation, and cultural respect.</p>
+    </div>
+
+    <div class="step">
+      <h3>04 — Applying</h3>
+      <p>I can apply these lessons in my future
+      studies and career in economics and public policy.</p>
+    </div>
+  </div>
+</section>
+
+<section class="conclusion" id="reflection">
+  <div class="eyebrow">MY FINAL REFLECTION</div>
+  <h2>Learning Beyond the Classroom</h2>
+  <p>
+    Advanced Business Communication helped me realize
+    that good communication is not just about speaking
+    or writing. It is about expressing ideas clearly,
+    listening to others, and showing respect.
+    Through this subject, I learned important skills
+    that I can use in my studies and future career.
+  </p>
+  <a href="#about" class="btn">Back to Top ↑</a>
+</section>
+
+<footer>
+  © 2026 Jose Cataquiz | ADVCOM E-Portfolio |
+  San Beda University
+</footer>
+
+<!-- BACKGROUND MUSIC -->
+<div class="music-player">
+  <button id="musicButton" onclick="toggleMusic()"
+          aria-label="Play or pause music">▶</button>
+  <div>
+    <strong style="font-size:12px">Softie</strong>
+    <small id="musicStatus">Tap to play</small>
+  </div>
+  <input type="range" min="0" max="100" value="25"
+         aria-label="Music volume"
+         oninput="setVolume(this.value)">
+</div>
+
+<audio id="backgroundMusic" loop preload="none">
+  <source src="softie.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PROJECT DETAILS MODAL -->
+<div class="modal" id="projectModal" role="dialog"
+     aria-modal="true" aria-label="Project information">
+  <div class="modal-content">
+    <button class="close" onclick="closeModal()">✕</button>
+    <div id="modalInfo"></div>
+  </div>
+</div>
+
+<script>
+// ADD YOUR PUBLIC VIDEO LINKS HERE.
+// YouTube unlisted links are supported.
+// Example: https://youtu.be/VIDEO_ID
+
+const VIDEO_1_URL = "";
+const VIDEO_2_URL = "";
+
+// Dark mode
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+}
+
+// Filter projects
+function filterWorks(type, button) {
+  document.querySelectorAll(".filter").forEach(b => {
+    b.classList.remove("active");
+  });
+
+  button.classList.add("active");
+
+  document.querySelectorAll(".work").forEach(card => {
+    card.style.display =
+      type === "all" || card.dataset.type === type
+      ? "block" : "none";
+  });
+}
+
+// Project details
+function showDetails(project) {
+  let content = "";
+
+  if (project === "blackjack") {
+    content = `
+      <h2>The Economics of Blackjack</h2>
+      <p><strong>Type:</strong> Speech Presentation Outline</p>
+      <p>This work explores probability, expected value,
+      and risk when making decisions.</p>
+      <p>It connects blackjack decision-making to economics,
+      businesses, and public policy.</p>
+      <h3>Reflection</h3>
+      <p>I learned how to use familiar situations
+      to explain economic ideas more effectively.</p>
+    `;
+  }
+
+  if (project === "culture") {
+    content = `
+      <h2>Cultural Awareness</h2>
+      <p>This activity discusses the meanings of symbols,
+      gestures, traditional clothing, and religious objects.</p>
+      <p>I learned that something acceptable in one culture
+      may be offensive or misunderstood in another.</p>
+      <h3>Reflection</h3>
+      <p>This helped me understand why respect and
+      cultural awareness matter in communication.</p>
+    `;
+  }
+
+  document.getElementById("modalInfo").innerHTML = content;
+  document.getElementById("projectModal")
+    .classList.add("show");
+}
+
+// Video opening
+function openVideo(number) {
+  const url = number === 1 ? VIDEO_1_URL : VIDEO_2_URL;
+
+  if (!url) {
+    alert("Video link not added yet. Add your YouTube link in the code.");
+    return;
+  }
+
+  try {
+    const parsed = new URL(url);
+    if (!["https:", "http:"].includes(parsed.protocol))
+      throw new Error("Invalid video URL");
+    window.open(parsed.href, "_blank", "noopener,noreferrer");
+  } catch (error) {
+    alert("Please add a valid video URL.");
+  }
+}
+
+function closeModal() {
+  document.getElementById("projectModal")
+    .classList.remove("show");
+}
+
+document.getElementById("projectModal")
+  .addEventListener("click", function(event) {
+    if (event.target === this) closeModal();
+  });
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") closeModal();
+});
+
+// Background music
+const music = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+const musicStatus = document.getElementById("musicStatus");
+
+music.volume = 0.25;
+
+async function toggleMusic() {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicButton.textContent = "❚❚";
+      musicStatus.textContent = "Now playing";
+    } catch (error) {
+      musicStatus.textContent = "Unable to play audio";
+    }
+  } else {
+    music.pause();
+    musicButton.textContent = "▶";
+    musicStatus.textContent = "Paused";
+  }
+}
+
+function setVolume(value) {
+  music.volume = Number(value) / 100;
+}
+
+music.addEventListener("ended", function() {
+  musicButton.textContent = "▶";
+  musicStatus.textContent = "Tap to play";
+});
+</script>
+
+</body>
+</html>
